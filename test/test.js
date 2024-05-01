@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
-import Parser from '../src/js/index'
+import BlizzardParser from './index'
 var path = [
   '/Users/Shared/Battle.net/Agent/product.db',
   '/file/not/exist',
   '/path3/not/exist'
 ]
-const parser = new Parser()
+const parser = new BlizzardParser()
 const assert = require('assert')
 const expect = require('chai').expect
 describe('#getPath()', () => {
@@ -15,7 +15,7 @@ describe('#getPath()', () => {
 })
 describe('#setPath(value)', () => {
   it('setPath(value) should set path to the value \'' + path[2] + '\'', () => {
-    const _parser = new Parser()
+    const _parser = new BlizzardParser()
     _parser.setPath(path[2])
     assert.strictEqual(_parser.getPath(), path[2])
   })
@@ -25,13 +25,13 @@ describe('#isDBExist()', () => {
     assert.strictEqual(parser.isDBExist(), true)
   })
   it('_parser should not exist', () => {
-    const _parser = new Parser(path[1])
+    const _parser = new BlizzardParser(path[1])
     assert.strictEqual(_parser.isDBExist(), false)
   })
 })
 describe('#decode()', () => {
   it('_parser decode should throw an Error product.db not found', () => {
-    const _parser = new Parser(path[1])
+    const _parser = new BlizzardParser(path[1])
     assert.throws(_parser.decode, 'product.db not found at ' + path[1])
   })
 })
@@ -57,7 +57,7 @@ describe('#getInstallPath(uid)', () => {
 })
 describe('#Using function before decode', () => {
   it('should return an error ask you call decode() first', () => {
-    const _parser = new Parser()
+    const _parser = new BlizzardParser()
     expect(() => _parser.getInstallPath('heroes')).to.throw('You should decode first')
   })
 })

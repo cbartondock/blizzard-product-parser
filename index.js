@@ -1,7 +1,8 @@
-import decoder from './database'
-import settings from './settings'
+import decoder from './src/js/database'
+import settings from './src/js/settings'
 import fs from 'fs'
-class Parser {
+
+export class BlizzardParser {
   constructor (path = null) {
     this.decoder = decoder
     if (path == null) {
@@ -54,8 +55,6 @@ class Parser {
         return element.settings.installPath
       }
     }
-    return false
+    return undefined
   }
 }
-
-export default Parser

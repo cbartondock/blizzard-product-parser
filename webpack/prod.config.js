@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'source-map',
   bail: true,
   entry: {
-    'blizzparser': './src/js/index.js'
+    'blizzparser': './index.js'
   },
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
